@@ -16,5 +16,6 @@
   },
   "devDependencies": {
     "serve": "^9.6.0"
-  }
+  },
+  "homepage": "http://zoomhkg.github.io/iot-ui"
 }
