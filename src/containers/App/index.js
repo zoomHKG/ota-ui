@@ -1,11 +1,11 @@
 import fetch from 'isomorphic-fetch'
 import React, { Component } from 'react'
-import { Layout, Menu } from 'antd'
+import { Layout } from 'antd'
 import Search from '../common/Search'
-import Projects from '../common/Projects'
+import Body from '../common/Body'
 import './styles.css'
 
-const { Header, Content, Footer } = Layout
+const { Content, Footer } = Layout
 
 class App extends Component {
   constructor (props) {
@@ -17,44 +17,34 @@ class App extends Component {
   }
 
   handleSearch (project) {
-    fetch(`https://iot-repository-app.herokuapp.com/api/repo/projects?search=${project}`)
-      .then(response => response.json())
-      .then(result => this.setState({projects: result.data}))
-      .catch(err => console.log(err))
+    if (project) {
+      fetch(`https://iot-repository-app.herokuapp.com/api/repo/projects?search=${project}`)
+        .then(response => response.json())
+        .then(result => this.setState({projects: result.data}))
+        .catch(err => console.log(err))
+    } else {
+      this.setState({projects: []})
+    }
   }
 
   render () {
     const { projects } = this.state
     return (
       <Layout>
-        <Header style={{ position: 'fixed', zIndex: 1, width: '100%' }}>
-          <div className='logo' />
-          <Menu
-            theme='dark'
-            mode='horizontal'
-            defaultSelectedKeys={['2']}
-            style={{ lineHeight: '64px' }}
-          >
-            <Menu.Item key='1'>nav 1</Menu.Item>
-            <Menu.Item key='2'>nav 2</Menu.Item>
-            <Menu.Item key='3'>nav 3</Menu.Item>
-          </Menu>
-        </Header>
-        <Content style={{ padding: '0 50px', marginTop: 64 }}>
-          <div style={{ background: '#fff', padding: 24, minHeight: 380, textAlign: 'center' }}>
-            <Search
-              style={{ textAlign: 'center', zIndex: 1, width: '80%' }}
-              data={this.state.projects}
-              onSearch={this.handleSearch}
-              onChange={e => {
-                // console.log(e.target.value)
-                this.handleSearch(e.target.value)
-              }} />
-            <Projects data={projects} />
-          </div>
+        <Content style={{ padding: '50px 100px', width: '100%' }}>
+          <Search
+            style={{ textAlign: 'center', zIndex: 1, width: '80%' }}
+            data={this.state.projects}
+            onSearch={this.handleSearch}
+            onChange={e => {
+              // console.log(e.target.value)
+              this.handleSearch(e.target.value)
+            }} />
+          <Body projects={projects} />
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          IoT Apps ©2018 Created by zoomHKG
+        <Footer style={{ textAlign: 'center', position: 'absolute', zIndex: 1, left: 0, bottom: 0, right: 0 }}>
+          IoT Apps ©2018 Created by <a href='https://github.com/zoomHKG'>zoomHKG</a><br />
+          <a href='https://github.com/zoomHKG/ota-ui'><img src='https://badges.frapsoft.com/os/v2/open-source.png?v=103' /></a>
         </Footer>
       </Layout>
     )

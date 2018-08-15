@@ -36,3 +36,20 @@
   margin: 16px 24px 16px 0;
   float: left;
 }
+
+.ant-layout-content {
+  // background-color: #DDDDDD;
+}
+
+.ant-layout-footer {
+  background-color: #111111;
+  color: beige;
+}
+.ant-layout-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  // display: flex;
+  // align-items: center;
+  // justify-content: center;
+}

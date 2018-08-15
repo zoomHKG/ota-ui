@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { Input } from 'antd'
 import PropTypes from 'prop-types'
+import './styles.css'
 
 class Search extends Component {
   constructor (props) {
@@ -18,14 +19,12 @@ class Search extends Component {
 
   render () {
     return (
-      <div className='certain-category-search-wrapper' style={{ width: 250 }}>
-        <Input.Search
-          placeholder='input search text'
-          onSearch={this.props.onSearch}
-          style={{ width: 200 }}
-          onChange={this.props.onChange}
-        />
-      </div>
+      <Input.Search
+        placeholder='Search projects...'
+        onSearch={this.props.onSearch}
+        style={{ width: '100%' }}
+        onChange={this.props.onChange}
+      />
     )
   }
 }
