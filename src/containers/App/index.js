@@ -44,7 +44,9 @@ class App extends Component {
         </Content>
         <Footer style={{ textAlign: 'center', position: 'absolute', zIndex: 1, left: 0, bottom: 0, right: 0 }}>
           IoT Apps ©2018 Created by <a href='https://github.com/zoomHKG'>zoomHKG</a><br />
-          <a href='https://github.com/zoomHKG/ota-ui'><img src='https://badges.frapsoft.com/os/v2/open-source.png?v=103' /></a>
+          <a href='https://github.com/zoomHKG/ota-ui'>
+            <img src='https://badges.frapsoft.com/os/v2/open-source.png?v=103' alt='<3 OpenSource' />
+          </a>
         </Footer>
       </Layout>
     )
