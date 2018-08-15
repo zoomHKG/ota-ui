@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { List, Avatar } from 'antd'
 import IconText from '../IconText'
+import './styles.css'
 
 class Project extends Component {
   constructor (props) {
@@ -15,7 +16,7 @@ class Project extends Component {
     return (
       <List.Item
         key={name}
-        actions={[<IconText type='tags' text={version} />, <IconText type='rocket' text={device} />, <IconText type='message' text='2' />]}
+        actions={[<IconText type='rocket' text={device} />, <IconText type='tags' text={version} />]}
         extra={<img width={272} alt='logo' src='https://gw.alipayobjects.com/zos/rmsportal/mqaQswcyDLcXyDKnZfES.png' />}
       >
         <List.Item.Meta
@@ -23,7 +24,7 @@ class Project extends Component {
           title={name}
           description={description}
         />
-        Lorem ipsum..
+        <a href={`https://iot-repository-app.herokuapp.com/api/ota/${name}`} >Download</a>
       </List.Item>
     )
   }
